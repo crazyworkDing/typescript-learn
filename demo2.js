@@ -421,3 +421,36 @@ var CreateByClass18 = /** @class */ (function () {
     };
     return CreateByClass18;
 }());
+//接口继承类:typescript特有
+var CreateByClass3 = /** @class */ (function () {
+    function CreateByClass3(name) {
+        this.name = name;
+    }
+    return CreateByClass3;
+}());
+var createByClass19 = {
+    name: 'sss',
+    id: 11,
+    uuid: '23'
+};
+//泛型
+function createByFunction10(length, value) {
+    var array = [];
+    for (var i = 0; i < length; i++) {
+        array[i] = value;
+    }
+    return array;
+}
+createByFunction10(10, 'ding');
+function createByFunction20(params) {
+    return [params[1], params[0]];
+}
+createByFunction20(['sss', 123]);
+function createByFunction21(arg) {
+    console.log(arg.length);
+    return arg;
+}
+var createByFunction22;
+createByFunction22 = function (name, id) {
+    return [id, name];
+};

@@ -519,8 +519,70 @@ interface CreateByInterface13 {
 interface CreateByInterface14 extends CreateByInterface13 {
   sayHi2(): void
 }
+//接口继承类:typescript特有
+class CreateByClass3 {
+  name: string;
+  id: number;
+  constructor(name) {
+    this.name = name;
+  }
+}
+interface CreateByInterface15 extends CreateByClass3 {
+  uuid: string;
+} 
 
+let createByClass19: CreateByInterface15 = {
+  name: 'sss',
+  id: 11,
+  uuid: '23'
+}
 
+//泛型
+function createByFunction10<T>(length: number, value: T): Array<T> {
+  let array: T[] = [];
+  for(let i = 0; i < length; i++) {
+    array[i] = value;
+  }
+  return array;
+}
+createByFunction10(10, 'ding');
+function createByFunction20<T,U>(params: [T, U]): [U, T] {
+  return [params[1], params[0]];
+}
+createByFunction20(['sss',123]);
+//泛型约束
+// function loggingIdentity<T>(arg: T): T {
+//     console.log(arg.length);
+//     return arg;
+// } 在函数内部使用泛型变量的时候，由于事先不知道它是哪种类型，所以不能随意的操作它的属性或方法
+
+interface CreateByInterface16 {
+  length: number
+}
+function createByFunction21<T extends CreateByInterface16>(arg: T): T {
+  console.log(arg.length)
+  return arg
+}
+//泛型接口
+interface CreateByInterface17 {
+  <T, U>(name: T, id: U): [U, T]
+}
+let createByFunction22: CreateByInterface17;
+createByFunction22 = function <T, U>(name: T, id: U): [U, T] {
+  return [id, name]
+}
+//泛型类
+class GenericNumber<T> {
+    zeroValue: T;
+    add: (x: T, y: T) => T;
+}
+
+let myGenericNumber = new GenericNumber<number>();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function(x, y) { return x + y; };
+
+//声明合并
+//函数的合并--重载
 
 
 
